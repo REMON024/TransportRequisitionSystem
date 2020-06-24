@@ -1,0 +1,108 @@
+      <div>
+              <h5>Approve Requisition</h5>
+          <div>
+                  <div class="form-group">
+                          
+                          <p> {{objRequisition.Note}}</p>
+                      </div>
+
+              <div class="col-md-12">
+                  <div class="col-md-6">
+                      
+                      <div class="form-group">
+                          <label>Requisition Date</label>
+                          <p> {{objRequisition.RequisitionDate | date:"yyyy-MMM-dd"}}</p>
+                      </div>
+                      
+                     
+                      
+
+                          <div class="form-group">
+                            <label for="FromTime">From Time <span style="color: rgb(252, 8, 8);">*</span></label>
+                            
+                            <input type="datetime-local" name="FromTime" [(ngModel)]="objRequisition.FromTime" class="form-control"
+                              required>
+                          </div>
+                      
+                      <div class="form-group">
+                          <label>Requisitor</label>
+                          <p> {{objRequisition.EmployeeName}}</p>
+                      </div>
+                      <div class="form-group">
+                          <label>Designation</label>
+                          <p> {{objRequisition.Designation}}</p>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Department</label>
+                          <p> {{objRequisition.Department}}</p>
+                      </div>
+
+                      <div class="form-group">
+                              <label>Select Driver</label>
+                              <select name="driverID" class="form-control" [(ngModel)]="objRequisition.DriverID" (change)="CheckDriverAvailability(objRequisition)">
+                                  <option value="0" selected>--Select--</option>
+                                  <option *ngFor="let driver of lstDriver" [(ngValue)]="driver.DriverInfoId">{{driver.EmployeeName}}</option>
+                              </select>
+                              <p *ngIf="IsDriverAvilable" class="text-danger">This driver not available </p>
+                          </div>
+                  </div>
+
+                  
+                  <div class="col-md-6">
+                          <div class="form-group">
+                                  <label>Vehicle Needed</label>
+                                  <p> {{objRequisition.VehicleName}}</p>
+                              </div>
+
+                            
+
+                          <div class="form-group">
+                            <label for="ToTime">To Time <span style="color: rgb(252, 8, 8);">*</span></label>
+                           
+                            <input type="datetime-local" name="ToTime" [(ngModel)]="objRequisition.ToTime" class="form-control" required>
+                          </div>
+
+                          <div class="form-group">
+                                  <label>Place To Visit</label>
+                                  <p> {{objRequisition.PalcetoVisit}}</p>
+                              </div>
+  
+                          <div class="form-group">
+                              <label>Purpose Of Visit</label>
+                              <p> {{objRequisition.PurposeofVisit}}</p>
+                          </div>
+                          <div class="form-group">
+                              <label>Project Name</label>
+                              <p> {{objRequisition.ProjectName}}</p>
+                          </div>
+
+                      <div class="form-group">
+                          <label>Select Vehicle</label>
+                          <select name="VehicleID" class="form-control" [(ngModel)]="objRequisition.VehicleID" (change)="CheckVehicleAvailability(objRequisition)">
+                              <option value="0" selected>--Select--</option>
+                              <option *ngFor="let vehicle of lstVehicle" [(ngValue)]="vehicle.VehicleID">
+                                  {{vehicle.Name+ ' '+ vehicle.RegistrationNo}}
+                              </option>
+                          </select>
+                          <p *ngIf="IsVehicleAvilable" class="text-danger">This vehicle not available </p>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="ApproveOrRejectNote">Note</label>
+                        <textarea type="text" rows="4" name="ApproveOrRejectNote" [(ngModel)]="objRequisition.ApproveOrRejectNote" class="form-control"
+                          required></textarea>
+                      </div>
+                      
+                  </div>
+              </div>
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" routerLink="/dashboard/tms/requisition-list" (click)="Reject(objRequisition)">Reject</button>
+              <button type="button" class="btn btn-primary" routerLink="/dashboard/tms/requisition-list" (click)="Approve(objRequisition)">Approve</button>
+              <button type="button" class="btn btn-primary" routerLink="/dashboard/tms/requisition-list" (click)="Close()">Close</button>
+
+          </div>
+      </div>
+  

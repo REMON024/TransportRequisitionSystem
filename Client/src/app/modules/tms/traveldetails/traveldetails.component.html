@@ -1,0 +1,571 @@
+<div class="transition-requisition-form">
+  
+    <div class="container">
+      <div class="row" >
+        <div class="col-md-12">
+          
+          <h2 class="text-center form-name">Travel Details</h2>
+        </div>
+        
+        <div class="col-md-6">
+        <div class="request-details">
+    
+          <label class="req-title">Request Details</label>
+          <form class="form">
+            <div class="form-group row">
+              <label class="col-xs-5 control-label-left">Request Date</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objrequisition.RequisitionDate | date:"yyyy-MMM-dd"}}
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Vehicle Needed</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                  {{objvehicle.Name}}
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">From Time</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objrequisition.FromTime | date:"yyyy-MMM-dd hh:mm"}}
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">To Time</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objrequisition.ToTime | date:"yyyy-MMM-dd hh:mm"}}
+                  
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Place to Visit</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objrequisition.PalcetoVisit}}
+                
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Purpose of Visit</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objrequisition.PurposeofVisit}}
+               
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Project Name</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objrequisition.ProjectName}}
+                
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Requestor</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                    {{objemploye.EmployeeName}}
+             
+                
+                </div>
+              </div>
+            </div>
+                <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Designation</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                   {{objemploye.Designation}} 
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Department</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                   {{objemploye.Department}} 
+                   
+                </div>
+              </div>
+            </div>
+            <label class="m-t-20 req-title">Vehicle Allocation</label>
+            <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Registration No.</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+               {{objvehicle.RegistrationNo}}
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-xs-5 control-label-left ">Driver</label>
+              <div class="col-xs-7">
+                 <div class="like-as-input-field-left">
+                  {{objdriver.EmployeeName}}
+                </div>
+              </div>
+            </div>
+           
+            
+          </form>
+        
+        </div>      
+    
+        </div>
+            <div class="col-md-6">
+              <div class="travel-details">
+                 <label class="travel-title">Travels Details</label>
+                 <form class="form">
+                  <div class="form-group row">
+                    <label class="col-xs-5 control-label-right">Mileage Started</label>
+                    <div class="col-xs-7">
+                       <div class="like-as-input-field-right">
+                         {{objTravelDetails.MileageStart}}
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div class="form-group row">
+                      <label class="col-xs-5 control-label-right">Mileage Ended</label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                           {{objTravelDetails.MileageEnd}}
+                        </div>
+                      </div>
+                    </div>
+                      
+                  <div class="form-group row">
+                      <label class="col-xs-5 control-label-right">Fuel in Liter</label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                           {{objTravelDetails.FuelInLiter}}
+                        </div>
+                      </div>
+                    </div>
+                      
+                  <div class="form-group row">
+                      <label class="col-xs-5 control-label-right">Amount</label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                                {{objTravelDetails.Amount}}                                                                </div>
+                      </div>
+                    </div>
+                      
+                  <div class="form-group row">
+                      <label class="col-xs-5 control-label-right">Receipt No</label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                           {{objTravelDetails.ReceiptNo}}
+                        </div>
+                      </div>
+                    </div>
+                      
+                  <div class="form-group row">
+                      <label class="col-xs-5 control-label-right">Filled by </label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                           {{objTravelDetails.FilledBy}}
+                        </div>
+                      </div>
+                    </div>
+                      
+                  <div class="form-group row">
+                      <label class="col-xs-5 control-label-right">Driver</label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                          {{objdriver.EmployeeName}}
+                        </div>
+                      </div>
+                    </div>
+                      
+                  <div class="form-group row m-t-50">
+                      <label class="col-xs-5 control-label-right">HOD</label>
+                      <div class="col-xs-7">
+                         <div class="like-as-input-field-right">
+                           {{objemploye.HOD}}
+                        </div>
+                      </div>
+                    </div>
+                      
+                  </form>
+    
+      
+                    
+      
+              </div>
+    
+            </div>
+          </div>
+         
+    <div class="col-md-12 m-t-20">
+        <div>
+            <button type="button" routerLink="/dashboard/tms/AdvancedReport" class="btn btn-close">Close</button>
+        </div>
+        <div class="pull-right">
+            <button type="button" (click)="captureScreen()" class="btn print-btn">Print</button>
+        </div>
+    </div>
+  </div>
+ 
+    
+    
+    
+    </div>
+
+       
+    <div id="report" hidden>
+
+         <head>
+           <meta charset="utf-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1">
+           <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+          
+           <style type="text/css">
+           
+           .transition-requisition-form{
+             margin: 20px 0px 60px 0px;
+           }
+           .company-name{
+             font-weight: 700;
+             font-size: 40px;
+             padding: 5px;
+             margin: 20px 0px 0px 0px;
+           }
+           .form-name{
+             font-weight: 700;
+             font-size: 38px;
+             padding: 5px;
+             margin: 0px 0px 40px 0px;
+             text-decoration: underline;
+           }
+           .control-label-left {
+             font-weight: normal;
+         }
+              .like-as-input-field-left{  
+             display: block;
+             width: 100%;
+             height: 24px;
+             padding: 1px 12px;
+             font-size: 14px;
+             line-height: 1.42857143;
+             color: #555;
+             background-color: transparent;
+             background-image: none;
+             border: 0px;
+             border-radius: 0px;
+           }
+           .request-details .form-group {
+             margin-bottom: 2px;
+         }
+         .travel-details .form-group {
+             margin-bottom: 12px;
+         }
+         .control-label-right {
+             font-weight: 600;
+             font-size: 16px;
+         }
+              .like-as-input-field-right{  
+               display: block;
+             width: 100%;
+             height: 24px;
+             padding: 1px 12px;
+             font-size: 14px;
+             line-height: 1.42857143;
+             color: #555;
+             background-color: transparent;
+             background-image: none;
+             border: 1px solid #c7c7c7;
+             border-radius:0px;
+           }
+           .print-btn{
+             padding: 7px 40px;
+             text-align: center;
+             background: #286090;
+             color: #fff;
+             font-weight: 700;
+           }
+           .print-btn:hover{
+            color: #f2f2f2;
+           }
+           .m-t-20{
+             margin-top:20px;
+           }
+           .m-t-50{
+             margin-top:50px;
+           }
+           .travel-title{
+             font-size: 18px;
+             padding: 5px 0px;
+           }
+           .foot-note p{
+             margin:2px;
+           }
+           .foot-note-title{
+             font-size: 14px;
+             font-weight: 600;
+           }
+           .req-title{
+             font-size: 16px;
+             font-weight: 600;
+           }
+           .copyright-title{
+             font-size: 13px;
+             font-weight: 600;
+           }
+           .copy-right-text p{
+             font-size: 12px;
+             margin: 2px;
+           }
+           </style>
+         </head>
+        
+         <div class="transition-requisition-form">
+         <div class="container">
+           <div class="row">
+             <div class="col-xs-12">
+               <h1 class="text-center company-name">DataNet</h1>
+               <h2 class="text-center form-name">Travel Details</h2>
+             </div>
+                 
+                 <div class="col-xs-6">
+                 <div class="request-details">
+             
+                   <label class="req-title">Request Details</label>
+                   <form class="form">
+                     <div class="form-group row">
+                       <label class="col-xs-5 control-label-left">Request Date</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objrequisition.RequisitionDate | date:"yyyy-MMM-dd"}}
+                         </div>
+                       </div>
+                     </div>
+                     <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Vehicle Needed</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                         {{objvehicle.Name}}
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">From Time</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objrequisition.FromTime | date:"yyyy-MMM-dd hh:mm"}}
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">To Time</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objrequisition.ToTime | date:"yyyy-MMM-dd hh:mm"}}
+                           
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Place to Visit</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objrequisition.PalcetoVisit}}
+                         
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Purpose of Visit</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objrequisition.PurposeofVisit}}
+                        
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Project Name</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objrequisition.ProjectName}}
+                         
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Requestor</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                             {{objemploye.EmployeeName}}
+                      
+                         
+                         </div>
+                       </div>
+                     </div>
+                         <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Designation</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                            {{objemploye.Designation}} 
+                         </div>
+                       </div>
+                     </div>
+                     <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Department</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                            {{objemploye.Department}} 
+                            
+                         </div>
+                       </div>
+                     </div>
+                     <label class="m-t-20 req-title">Vehicle Allocation</label>
+                     <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Registration No.</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                        {{objvehicle.RegistrationNo}}
+                         </div>
+                       </div>
+                     </div>
+                     <div class="form-group row">
+                       <label class="col-xs-5 control-label-left ">Driver</label>
+                       <div class="col-xs-7">
+                          <div class="like-as-input-field-left">
+                            {{objdriver.EmployeeName}}
+                         </div>
+                       </div>
+                     </div>
+                     
+                     
+                   </form>
+                 
+                 </div>      
+             
+                 </div>
+                     <div class="col-xs-6">
+                       <div class="travel-details">
+                          <label class="travel-title">Travels Details</label>
+                          <form class="form">
+                             <div class="form-group row">
+                               <label class="col-xs-5 control-label-right">Mileage Started</label>
+                               <div class="col-xs-7">
+                                  <div class="like-as-input-field-right">
+                                    {{objTravelDetails.MileageStart}}
+                                 </div>
+                               </div>
+                             </div>
+               
+                             <div class="form-group row">
+                                 <label class="col-xs-5 control-label-right">Mileage Ended</label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                      {{objTravelDetails.MileageEnd}}
+                                   </div>
+                                 </div>
+                               </div>
+                                 
+                             <div class="form-group row">
+                                 <label class="col-xs-5 control-label-right">Fuel in Liter</label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                      {{objTravelDetails.FuelInLiter}}
+                                   </div>
+                                 </div>
+                               </div>
+                                 
+                             <div class="form-group row">
+                                 <label class="col-xs-5 control-label-right">Amount</label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                           {{objTravelDetails.Amount}}                                                                </div>
+                                 </div>
+                               </div>
+                                 
+                             <div class="form-group row">
+                                 <label class="col-xs-5 control-label-right">Receipt No</label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                      {{objTravelDetails.ReceiptNo}}
+                                   </div>
+                                 </div>
+                               </div>
+                                 
+                             <div class="form-group row">
+                                 <label class="col-xs-5 control-label-right">Filled by </label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                      {{objTravelDetails.FilledBy}}
+                                   </div>
+                                 </div>
+                               </div>
+                                 
+                             <div class="form-group row">
+                                 <label class="col-xs-5 control-label-right">Driver</label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                      {{objdriver.EmployeeName}}
+                                   </div>
+                                 </div>
+                               </div>
+                                 
+                             <div class="form-group row m-t-50">
+                                 <label class="col-xs-5 control-label-right">HOD</label>
+                                 <div class="col-xs-7">
+                                    <div class="like-as-input-field-right">
+                                      {{objemploye.HOD}}
+                                   </div>
+                                 </div>
+                               </div>
+                                 
+                             </form>
+               
+                       </div>
+             
+                     </div>
+                   </div>
+                   <div class="col-md-12">
+                     <div class="foot-note">
+                     <h6 class="foot-note-title m-t-50">NOTES</h6>
+                     <p>
+                         1. The driver will inspect the car before start the trip.
+                     </p>
+                     <p>
+                       2. The driver will be responsible for any damage to the vehicle during the trip
+                     </p>
+                     <p>
+                       3. The driver will abide by all traffic laws and have all necessary document()Driver's License/ Passport
+                     </p>
+                     <p>
+                       4.The Driver/passenger should report any unusual incident or problem immediately to the officer-in-charge.
+                     </p>
+                     </div>
+                     
+                     </div>
+                     
+                     <div class="col-md-12 m-t-50">
+                     <div class="copy-right-text">
+                     <h6 class="copyright-title">DataNet Pty Ltd.</h6>
+                     <p>First House, First Floor, Betfusile Street, Mbabane, Swaziland</p>
+                     <p>Tel: +26824069000 email: <span style="color: blue; text-decoration:underline">info@dnet.co.sz </span>   &nbsp; www.dnet.co.sz</p>
+                     </div>
+                     </div>
+                     </div>
+                     
+                     
+                     
+         </div>      
+    </div>      
+                
+  

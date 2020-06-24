@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  nybsys.api:
+    image: ${DOCKER_REGISTRY-}tmsapi
+    ports:
+      - 8383:8383
+    environment:
+      ASPNETCORE_URLS: http://+:8383
+      ASPNETCORE_ENVIRONMENT: Production
+    build:
+      context: .
+      dockerfile: NybSys.API/Dockerfile
+    network_mode: bridge
+
+  nybsys.client:
+    image: ${DOCKER_REGISTRY-}tmsclient
+    build:
+      context: .
+      dockerfile: Client/Dockerfile
+    ports:
+      - 83:80
+    network_mode: bridge

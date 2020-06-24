@@ -1,0 +1,123 @@
+[
+    {
+        "Title": "Dashboard",
+        "Url": "/dashboard",
+        "Icon": "fa fa-dashboard fa-fw",
+        "Child": null,
+        "AccessRights": ["SuperAdmin"]
+    },
+
+    {
+        "Title": "Dashboard",
+        "Url": "/dashboard/Userdashboard",
+        "Icon": "fa fa-dashboard fa-fw",
+        "Child": null,
+        "AccessRights": ["Requisitor"]
+    },
+   
+    {
+        "Title": "Settings",
+        "Url": null,
+        "Icon": "fa fa-fw fa-cog",
+        "AccessRights": ["SuperAdmin"],
+        "Child": [
+            {
+                "Title": "User List",
+                "Url": "/dashboard/user/user-list",
+                "Icon": "fa fa-fw fa-users",
+                "AccessRights": ["SuperAdmin"]
+            },
+            {
+                "Title": "Access Right",
+                "Url": "/dashboard/access-right/access-right-list",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            }
+        ]
+    },    
+    {
+        "Title": "Transport Management System",
+        "Url": null,
+        "Icon": "fa fa-fw fa-cog",
+        "AccessRights": ["SuperAdmin","Requisitor"],
+        "Child": [
+            {
+                "Title": "Requisition",
+                "Url": "/dashboard/tms/requisition",
+                "Icon": "fa fa-fw fa-users",
+                "AccessRights": ["SuperAdmin","Requisitor"]
+            },
+            {
+                "Title": "DriverDashboard",
+                "Url": "/dashboard/Driverdashboard",
+                "Icon": "fa fa-fw fa-users",
+                "AccessRights": ["SuperAdmin"]
+            },
+            {
+                "Title": "VehicleDashboard",
+                "Url": "/dashboard",
+                "Icon": "fa fa-fw fa-users",
+                "AccessRights": ["SuperAdmin"]
+            },            
+            {
+                "Title": "Requisition List",
+                "Url": "/dashboard/tms/requisition-list",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            },
+            {
+                "Title": "Advanced Report",
+                "Url": "/dashboard/tms/AdvancedReport",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            }
+            ,
+            {
+                "Title": "Vehicle",
+                "Url": "/dashboard/tms/vehicle",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            }
+            ,
+            {
+                "Title": "Driver",
+                "Url": "/dashboard/tms/driver",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            }
+             ,
+            {
+                "Title": "Driver List",
+                "Url": "/dashboard/tms/driverList",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            },
+            {
+                "Title": "Vehicle List",
+                "Url": "/dashboard/tms/vehicleList",
+                "Icon": "fa fa-fw fa-tasks",
+                "AccessRights": ["SuperAdmin"]
+            }
+        ]
+    },
+    {
+        "Title": "Report",
+        "Url": null,
+        "Icon": "fa fa-fw fa-book",
+        "AccessRights": ["SuperAdmin"],
+        "Child": [
+            {
+                "Title": "Session Log",
+                "Url": "/dashboard/report/session-log",
+                "Icon": "fa fa-fw fa-user-secret",
+                "AccessRights": ["SuperAdmin"]
+            },
+            {
+                "Title": "Audit Log",
+                "Url": "/dashboard/report/audit-log",
+                "Icon": "fa fa-fw fa-user-md",
+                "AccessRights": ["SuperAdmin"]
+            }
+        ]
+    }
+]

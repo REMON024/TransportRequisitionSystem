@@ -1,0 +1,9 @@
+<app-user-add-update
+  *ngIf="isShow"
+  [isDisableButton]="isDisableButton"
+  ButtonText="Update User" 
+  IsUpdate="true"
+  [User]="user" 
+  (AfterSubmit)="SubmitUserForm($event)"
+  Title="User Update Form">
+</app-user-add-update>

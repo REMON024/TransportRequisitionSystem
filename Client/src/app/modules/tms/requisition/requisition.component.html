@@ -1,0 +1,89 @@
+<div class="container">
+  <div class="formcontent">
+    <div class="col-md-12">
+      <h1>Requisition Form</h1>
+    </div>
+    <form (ngSubmit)="saveRequisition()" #requisitionForm="ngForm">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label  for="PalcetoVisit">Palce to Visit <span style="color: rgb(252, 8, 8);">*</span></label>
+          <input type="text" name="PalcetoVisit" [(ngModel)]="objRequisition.PalcetoVisit" class="form-control"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="PurposeofVisit">Purpose of Visit <span style="color: rgb(252, 8, 8);">*</span></label>
+          <textarea type="text" rows="4" name="PurposeofVisit" [(ngModel)]="objRequisition.PurposeofVisit" class="form-control"
+            required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="FromTime">From Time <span style="color: rgb(252, 8, 8);">*</span></label>
+          
+          <input type="datetime-local" name="FromTime" (change)="Check(objRequisition.FromTime)" [(ngModel)]="objRequisition.FromTime" class="form-control"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="ToTime">To Time <span style="color: rgb(252, 8, 8);">*</span></label>
+         
+          <input type="datetime-local" name="ToTime" (change)="CheckToDateWithFromDate(objRequisition.ToTime,objRequisition.FromTime)" [(ngModel)]="objRequisition.ToTime" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <label for="Note">Note <span style="color: rgb(252, 8, 8);">*</span></label>
+            <textarea type="text" rows="4" name="Note" [(ngModel)]="objRequisition.Note" class="form-control"
+              required></textarea>
+          </div>
+      </div>
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="ProjectName">Project Name <span style="color: rgb(252, 8, 8);">*</span></label>
+          <input type="text" name="ProjectName" [(ngModel)]="objRequisition.ProjectName" class="form-control" required>
+        </div>
+        <div class="form-group" *ngIf="vehicleType">
+          <label for="VehicleTypeId">Vehicle Type <span style="color: rgb(252, 8, 8);">*</span></label>
+
+          <select name="VehicleTypeID" class="form-control" (change)="getVehicleByType()" [(ngModel)]="objRequisition.VehicleTypeID" >
+            <option value="0" selected>--Select--</option>
+            <option *ngFor="let type of vehicleType" [(ngValue)]="type.VehicleTypeID">{{type.TypeName}}</option>
+          </select>
+
+        </div>
+
+        <div class="form-group">
+            <label for="VehicleID">Vehicle </label>
+  
+            <select name="VehicleID" class="form-control"  [(ngModel)]="objRequisition.VehicleID" >
+              <option value="0" selected>--Select--</option>
+              <option *ngFor="let vehicle of lstVehicle" [(ngValue)]="vehicle.VehicleID">{{vehicle.Name}}</option>
+            </select>
+  
+          </div>
+        <div class="form-group">
+          <label for="IsSelfDrive">Self Drive </label>
+          <input type="checkbox" class="form-control-check" name="IsSelfDrive" [(ngModel)]="IsSelfDrive" [value]="true">
+
+        </div>
+
+        <div class="form-group">
+          <span ngif="IsSelfDrive">
+            <label for="SelefDriverName">Driver Name <span [hidden]="!IsSelfDrive" style="color: rgb(252, 8, 8);">*</span></label>
+            <input type="text" name="SelefDriverName" required="IsSelfDrive" [disabled]="!IsSelfDrive" [(ngModel)]="objRequisition.SelefDriverName"
+              class="form-control ">
+
+          </span>
+
+        </div>
+
+        <div class="form-group">
+          <label for="NumberofPassenger">Number of Passenger <span style="color: rgb(252, 8, 8);">*</span></label>
+          <input type="text" name="NumberofPassenger" [(ngModel)]="objRequisition.NumberofPassenger" class="form-control"
+            required>
+        </div>
+        <input type="submit" [disabled]="!requisitionForm.valid" class="btn btn-success pull-right" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>

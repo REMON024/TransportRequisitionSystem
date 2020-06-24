@@ -1,0 +1,73 @@
+{
+  "RoleName": "",
+  "RightLists": [
+    {
+      "ControllerName": "Log",
+      "Title": "Log Report",
+      "Actions": [
+        {
+          "ActionName": "GetAuditLogByFilter",
+          "Title": "Get Audit Log list"
+        }
+      ]
+    },
+    {
+      "ControllerName": "Security",
+      "Title": "User & Authentication",
+      "Actions": [
+        {
+          "ActionName": "CreateUser",
+          "Title": "Create User"
+        },
+        {
+          "ActionName": "UpdateUser",
+          "Title": "Update User"
+        },
+        {
+          "ActionName": "GetUser",
+          "Title": "Get user details"
+        },
+        {
+          "ActionName": "ChangePassword",
+          "Title": "Password Change"
+        },
+        {
+          "ActionName": "ResetPassword",
+          "Title": "Reset Password"
+        },
+        {
+          "ActionName": "Login",
+          "Title": "Login into system"
+        },
+        {
+          "ActionName": "Logout",
+          "Title": "Logout from system"
+        },
+        {
+          "ActionName": "GetSessionLogByFilter",
+          "Title": "Get Session log by filter"
+        },
+        {
+          "ActionName": "GetUsersByFilter",
+          "Title": "Get user list by filter"
+        },
+        {
+          "ActionName": "CancelSession",
+          "Title": "Cancel any user session"
+        },
+        {
+          "ActionName": "SaveOrUpdateAccessControl",
+          "Title": "Save Or Update Access Control"
+        },
+        {
+          "ActionName": "GetAllAccessControl",
+          "Title": "Get all access control"
+        },
+        {
+          "ActionName": "GetAccessControlByRole",
+          "Title": "Get access control by role name"
+        }
+      ]
+    }
+  ]
+}

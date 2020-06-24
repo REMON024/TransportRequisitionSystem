@@ -1,0 +1,83 @@
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-4">
+        <h4><b style="color: white">SESSION LOG</b></h4>
+      </div>
+    </div>
+  </div>
+  <div class="table-filter">
+    <div class="row">
+      <div class="col-sm-12">
+        <form [formGroup]="SearchForm" (submit)="SubmitSearch(SearchForm.value)">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+          <!-- <span class="filter-icon"><i class="fa fa-filter"></i></span> -->
+          <div class="filter-group">
+            <label>To Date</label>
+            <input type="text" [matDatepicker]="toDate" class="form-control" (click)="toDate.open()" formControlName="ToDate">
+            <mat-datepicker #toDate></mat-datepicker>
+          </div>
+          <div class="filter-group">
+            <label>From Date</label>
+            <input type="text" [matDatepicker]="fromDate" class="form-control" (click)="fromDate.open()"
+              formControlName="FromDate">
+            <mat-datepicker #fromDate></mat-datepicker>
+          </div>
+          <div class="filter-group">
+            <label>Status</label>
+            <select class="form-control" formControlName="IsLoggedIn">
+              <option value='0' selected>All</option>
+              <option value='true' selected>Online</option>
+              <option value='false' selected>Offline</option>      
+            </select>
+          </div>
+          <div class="filter-group">
+            <input type="text" class="form-control" formControlName="UserId" placeholder="Username" appAutoFocus>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>IP Address</th>
+        <th>Device</th>
+        <th>Operating System</th>
+        <th>Browser</th>
+        <th>Login Date</th>
+        <th>Logout Date</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="lstSessionLog?.length > 0">
+      <tr *ngFor="let session of lstSessionLog | paginate : config; let i = index">
+        <td>{{appUtils.GetSerial(i, config.currentPage, config.itemsPerPage)}}</td>
+        <td>{{session.UserId}}</td>
+        <td>{{session.Ipaddress}}</td>
+        <td>{{session.Device}}</td>
+        <td>{{session.OS}}</td>
+        <td>{{session.Browser}}</td>
+        <td>{{session.LoginDate | date: 'yyyy-MM-dd hh:mm a'}}</td>
+        <td>{{session.LogoutDate | date: 'yyyy-MM-dd hh:mm a'}}</td>
+        <td>
+          <span *ngIf="session.IsLoggedIn" class="label label-success">ONLINE</span>
+          <span *ngIf="!session.IsLoggedIn" class="label label-danger">OFFLINE</span>
+        </td>
+        <td>
+          <button mat-icon-button *ngIf="session.IsLoggedIn" (click)="SessionOut(i, session.SessionId)">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="clearfix">
+    <div *ngIf="lstSessionLog?.length > 0">
+      <custom-pagination [config]="config" nextButtonText="Next" previousButtonText="Previous" (pageChange)="GetPageData($event)"></custom-pagination>
+    </div>
+  </div>
+</div>

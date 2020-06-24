@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="formcontent">
+    <div class="col-md-12">
+      <h1>Driver Form</h1>
+    </div>
+    <form (ngSubmit)="saveDriverInfo()" #driverForm="ngForm">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="name">Employee <span style="color: rgb(252, 8, 8);">*</span></label>
+          <select name="employeeID" class="form-control" [(ngModel)]="objDriver.EmployeeId" required>
+            
+            <option *ngFor="let employee of lstEmployee" [(ngValue)]="employee.EmployeeId">{{employee.EmployeeName}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="drivingLicenceNo">Driving Licence No <span style="color: rgb(252, 8, 8);">*</span></label>
+          <input type="text" name="drivingLicenceNo" [(ngModel)]="objDriver.DrivingLicenceNo" class="form-control"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="LicenceExpireDate">Licence Expire Date <span style="color: rgb(252, 8, 8);">*</span></label>
+          <input type="date" name="LicenceExpireDate" [ngModel]="objDriver.LicenceExpireDate| date:'yyyy-MM-dd'"
+            (ngModelChange)="objDriver.LicenceExpireDate = $event" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="col-md-4" for="DutyStart">Duty Start Time <span style="color: rgb(252, 8, 8);">*</span></label>
+            <a class="btn btn-primary col-md-2" (click)="openDutyStart()">Time</a>
+            <div class="col-md-6">
+              <input class="form-control" type="time" name="DutyStart" [(ngModel)]="objDriver.DutyStart" value="{{objDriver.DutyStart}}" required>
+            </div>
+            
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="row">
+            <label class="col-md-4" for="DutyEnd">Duty End Time <span style="color: rgb(252, 8, 8);">*</span></label>
+            <a class="btn btn-primary col-md-2" (click)="openDutyEnd()">Time</a>
+            <div class="col-md-6">
+              <input class="form-control" type="time" name="DutyEnd" [(ngModel)]="objDriver.DutyEnd" value="{{objDriver.DutyEnd}}" required>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label for="OtherInfo">Other Info</label>
+          <input type="text" name="OtherInfo" [(ngModel)]="objDriver.OtherInfo" class="form-control" >
+        </div>
+
+
+        <input type="submit" [disabled]="!driverForm.valid" class="btn btn-success" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<section class="panel panel_body req-list">
+    <div class="container">
+        <label class="col-md-1 pr0">From Date</label>
+        <div class="col-md-2">
+            <input type="date"  class="form-control" [(ngModel)]="queryObj.FromDate" />
+        </div>
+        <label class="col-md-1">To Date</label>
+        <div class="col-md-2">
+            <input type="date" class="form-control" (change)="CheckToDateWithFromDate(queryObj.ToDate,queryObj.FromDate)" [(ngModel)]="queryObj.ToDate" />
+            
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-primary" (click)="SearchByDateRange(queryObj)">Search</button>
+        </div>
+        <label class="col-md-1">Employee</label>
+        <div class="col-md-2">
+            
+            <select class="form-control" [(ngModel)]="selectedEmployeeID" id="employee">
+                <option [value]="0" selected>--Select--</option>
+                <option *ngFor="let emp of lstEmployee" [(ngValue)]="emp.EmployeeId">{{emp.FirstName+' '+emp.Lastname}}</option>
+            </select>
+            
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary" (click)="SearchByEmployee(queryObj)">Search</button>
+        </div>
+    </div>
+</section>
+<div>
+
+    <table class="table table-stripped">
+        <thead>
+
+
+        
+        <tr>
+            <th>#</th>
+            <th>Requisition Date</th>
+            <th>From Time</th>
+
+            <th>To Time</th>
+            
+            <th>Palce to Visit</th>
+            <th>Purpose of Visit</th>
+            <th>Number of Passenger</th>
+            <th>Project Name</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+        <tbody *ngIf="lstReq?.length > 0">
+        <tr *ngFor="let req of lstReq | paginate : config; let i = index">
+            <td>{{appUtils.GetSerial(i, config.currentPage, config.itemsPerPage)}}</td>
+            <td style="width:2in">{{req.RequisitionDate | date:"yyyy-MMM-dd"}}</td>
+            <td>{{req.FromTime | date:"yyyy-MMM-dd hh:mm"}}</td>
+
+          <td>{{req.ToTime | date:"yyyy-MMM-dd hh:mm"}}</td>
+            <td>{{req.PalcetoVisit}}</td>
+            <td>{{req.PurposeofVisit}}</td>
+            <td>{{req.NumberofPassenger}}</td>
+            <td>{{req.ProjectName}}</td>
+            <td>{{req.StatusName}}</td>
+            <td style="width:2in">
+                
+                <!-- <button title="Edit" [disabled]="req.RequisitionStatus==4 || req.RequisitionStatus==2 || req.RequisitionStatus==3"  (click)="editRequisition(req)"><i class="fa fa-edit"></i></button> -->
+                <button title="Approve" [disabled]="req.RequisitionStatus==4 || req.RequisitionStatus==2 || req.RequisitionStatus==3" routerLink="/dashboard/tms/requisitionapproval/{{req.RequisitionId}}" >
+                    <i class="fa fa-check-square"></i></button>
+
+
+                    <button title="Requisition Detail" routerLink="/dashboard/tms/requisitiondetails/{{req.RequisitionId}}"><i
+                        class="fa fa-info-circle"></i></button>
+
+                <!-- <button title="Travel Detail" [disabled]="req.RequisitionStatus==4 || req.RequisitionStatus==1 || req.RequisitionStatus==3" data-toggle="modal" data-target="#detailModal" (click)="addDetails(req)"><i
+                        class="fa fa-info-circle"></i></button> -->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="clearfix">
+        <div *ngIf="lstReq?.length > 0">
+          <custom-pagination [config]="config" nextButtonText="Next" previousButtonText="Previous" (pageChange)="GetPageData($event)"></custom-pagination>
+        </div>
+      </div>
+</div>
+

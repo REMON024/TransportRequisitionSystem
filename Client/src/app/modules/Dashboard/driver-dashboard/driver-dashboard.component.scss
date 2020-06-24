@@ -1,0 +1,53 @@
+
+  .progress-bar {
+    width: 100%;
+    height: 30px;
+    background: rgb(135, 150, 151);
+    position: relative;
+    margin: 5px 0;
+}
+
+.progress-bar .progress {
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  background: lightcoral;
+  overflow: visible;
+  border-radius: 0px !important; 
+}
+
+.progress-container{
+  display: inline-block;
+  width: 100%;
+}
+.progress-container .progress-bar-date{
+  width: 60px;
+  float: left;
+  position: relative;
+  top: 12px;
+}
+.progress-container .progress-bar{
+  width: calc( 100% - 62px);
+  float: right;
+}
+
+span.vl {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  width: 1px;
+  background: rgb(216, 216, 223);
+}
+
+  
+span.vl-left {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 1px;
+  background: rgb(216, 216, 223);
+}
+
+

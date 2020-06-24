@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Audit Log Message</h1>
+<div mat-dialog-content>
+  <ngx-json-viewer [json]="json_data"></ngx-json-viewer>
+</div>
+<div mat-dialog-actions>
+  <span fxFlex></span>
+  <button type="button" mat-button (click)="CloseDialog()" cdkFocusInitial>Close</button>
+</div>

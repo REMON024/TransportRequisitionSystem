@@ -1,0 +1,18 @@
+<pagination-template #p="paginationApi" [id]="config.id" (pageChange)="PageChangeTrack($event)">
+  <div fxLayout="row" fxLayoutAlign="center center" *ngIf="p.pages?.length > 0">
+    <button class="spacing" mat-mini-fab color="warn" (click)="p.previous()" [disabled]="p.isFirstPage()">
+        <i class="material-icons">keyboard_arrow_left</i>
+    </button>
+    <ng-container *ngFor="let page of p.pages">
+        <button class="spacing" mat-mini-fab color="warn" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+            <span>{{ page.label }}</span>
+        </button>
+        <button class="spacing" mat-mini-fab *ngIf="p.getCurrent() === page.value" [color]="p.getCurrent() === page.value ? 'primary' : ''">
+            <span>{{ page.label }}</span>
+        </button>
+    </ng-container>
+    <button class="spacing" mat-mini-fab color="warn" (click)="p.next()" [disabled]="p.isLastPage()">
+        <i class="material-icons">keyboard_arrow_right</i>
+    </button>
+  </div>
+</pagination-template>

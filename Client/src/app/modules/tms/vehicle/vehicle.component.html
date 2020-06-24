@@ -1,0 +1,131 @@
+<form (ngSubmit)="SaveVehicle()" #vehicleform="ngForm">
+<div class="container">
+    <div class="formcontent">
+        <div class="col-md-12">
+          <h1>Vehicle Entry</h1>
+        </div>
+ <div class="col-md-6">
+  <div class="form-group" *ngIf="vehicleType"> 
+    <label for="VehicleTypeId">Vehicle Type <span style="color: rgb(252, 8, 8);">*</span></label>
+
+    <select name="VehicleTypeID" class="form-control" [(ngModel)]="objVehicle.VehicleTypeID">
+      <option value="0" selected>--Select--</option>
+      <option *ngFor="let type of vehicleType" [(ngValue)]="type.VehicleTypeID">{{type.TypeName}}</option>
+  </select>
+    
+  </div>
+
+  <div class="form-group">
+    <label for="Name">Name <span style="color: rgb(252, 8, 8);">*</span></label>
+    <input type="text" name="name" [(ngModel)]="objVehicle.Name" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="RegistrationNo">Registration No</label>
+    <input type="text" name="RagistrationNo" [(ngModel)]="objVehicle.RegistrationNo" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label for="EngineNumber">Engine Number</label>
+    <input type="text" name="EngineNumber" [(ngModel)]="objVehicle.EngineNumber" class="form-control" >
+  </div>
+</div>
+  <div class="col-md-6">
+
+  <div class="form-group">
+    <label for="ChasisNumber">Chasis Number</label>
+    <input type="text" name="ChasisNumber" [(ngModel)]="objVehicle.ChasisNumber" class="form-control" >
+  </div>
+
+  <div class="form-group">
+    <label for="Capacity">Capacity <span style="color: rgb(252, 8, 8);">*</span></label>
+    <input type="text" name="Capacity" [(ngModel)]="objVehicle.Capacity" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="OtherInfo">Other Info</label>
+    <input type="text" name="OtherInfo" [(ngModel)]="objVehicle.OtherInfo" class="form-control" id="OtherInfo"
+      >
+  </div>
+  <div class="form-group">
+    <label for="Color">Color</label>
+    <input type="text" name="Color" [(ngModel)]="objVehicle.Color" class="form-control" >
+  </div> 
+</div> 
+
+<hr>
+<div class="col-md-12">
+<form (ngSubmit)="addDocument()" #vehicledocumentform="ngForm">
+
+  <div class="container">
+    <h1>Vehicle Document</h1>
+    
+      <div class="col-md-12">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="DocumentName">Document Name <span style="color: rgb(252, 8, 8);">*</span></label>
+            <input type="text" name="DocumentName" [(ngModel)]="objVehicleDocument.DocumentName" class="form-control" id="DocumentName"
+              required>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="ValidDate">Valid Date <span style="color: rgb(252, 8, 8);">*</span></label>
+            <input type="date" name="ValidDate" [(ngModel)]="objVehicleDocument.ValidDate" class="form-control" id="ValidDate"
+              required>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="name">Renewal Date <span style="color: rgb(252, 8, 8);">*</span></label>
+            <input type="date" name="RenewalDate" [(ngModel)]="objVehicleDocument.RenewalDate" class="form-control" id="RenewalDate"
+              required>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label style="width:100%;" for="name">&nbsp;</label>
+          <input type="submit" [disabled]="!vehicledocumentform.valid" class="btn btn-success" value="Add">
+        </div>
+      </div>
+    
+    <div>
+      <table class="table table-stripped">
+        <tr>
+          <th>Document Name</th>
+          <th>Valid Date</th>
+          <th>Renewal Date</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let document of lstVehicleDocument">
+          <td>
+            {{document.DocumentName}}
+          </td>
+          <td>
+            {{document.ValidDate | date:"yyyy-MMM-dd"}}
+          </td>
+          <td>
+            {{document.RenewalDate | date:"yyyy-MMM-dd"}}
+          </td>
+          <td>
+            <a title="Delete" (click)="removeVehicle($index)"> <i style="color:red" class="fa fa-trash"></i></a>
+          </td>
+        </tr>
+    
+      </table>
+    
+    
+    </div>
+    </div>
+    
+</form>
+
+<input type="submit" [disabled]="!vehicleform.valid" class="btn btn-success" value="Submit">
+</div>
+
+</div>
+</div>
+</form>
+
+
+
+    

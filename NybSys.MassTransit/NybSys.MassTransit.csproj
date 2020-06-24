@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Md. Nahid Hasan</Authors>
+    <Description>This is awesome library for Service Bus with MassTransit RabbitMq for microservices</Description>
+    <Copyright>Copyritht (C) 2018</Copyright>
+    <PackageTags>MassTransit, Asp.Net Core, Core, Service Bus, Event Bus</PackageTags>
+    <PackageProjectUrl>https://github.com/nahidhasanswe/AspNetCore-MassTransit</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/nahidhasanswe/AspNetCore-MassTransit</PackageLicenseUrl>
+    <PackageIconUrl>http://masstransit-project.com/public/open-graph-logo.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/nahidhasanswe/AspNetCore-MassTransit</RepositoryUrl>
+    <Version>1.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="5.1.5" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="5.1.5" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>

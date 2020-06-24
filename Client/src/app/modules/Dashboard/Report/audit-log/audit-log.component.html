@@ -1,0 +1,73 @@
+<div class="table-wrapper">
+  <div class="table-title">
+    <div class="row">
+      <div class="col-sm-4">
+        <h4><b style="color: white">AUDIT LOG</b></h4>
+      </div>
+    </div>
+  </div>
+  <div class="table-filter">
+    <div class="row">
+      <div class="col-sm-12">
+        <form [formGroup]="SearchForm" (submit)="SubmitSearch(SearchForm.value)">
+          <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+          <!-- <span class="filter-icon"><i class="fa fa-filter"></i></span> -->
+          <div class="filter-group">
+            <label>To Date</label>
+            <input type="text" [matDatepicker]="toDate" class="form-control" (click)="toDate.open()" formControlName="ToDate">
+            <mat-datepicker #toDate></mat-datepicker>
+          </div>
+          <div class="filter-group">
+            <label>From Date</label>
+            <input type="text" [matDatepicker]="fromDate" class="form-control" (click)="fromDate.open()"
+              formControlName="FromDate">
+            <mat-datepicker #fromDate></mat-datepicker>
+          </div>
+          <div class="filter-group">
+            <label>Action</label>
+            <select class="form-control" formControlName="Action">
+              <option value='0' selected>All</option>
+              <option *ngFor="let status of actionList" [value]="status.value">{{status.name}}</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <input type="text" class="form-control" formControlName="Username" placeholder="Username" appAutoFocus>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <table class="table table-striped table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Username</th>
+        <th>Action</th>
+        <th>Called Function</th>
+        <th>Log Description</th>
+        <th>Log Time</th>
+        <th>Log Message</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="lstAuditLog?.length > 0">
+      <tr *ngFor="let auditLog of lstAuditLog | paginate : config; let i = index">
+        <td>{{appUtils.GetSerial(i, config.currentPage, config.itemsPerPage)}}</td>
+        <td>{{auditLog.UserId}}</td>
+        <td>{{GetAction(auditLog.Action)}}</td>
+        <td>{{auditLog.CalledFunction}}</td>
+        <td>{{auditLog.LogDescription}}</td>
+        <td>{{auditLog.LogTime | date: 'yyyy-MM-dd hh:mm a'}}</td>
+        <td>
+          <button mat-icon-button (click)="OpenJsonViewer(auditLog.LogMessage)">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="clearfix">
+    <div *ngIf="lstAuditLog?.length > 0">
+      <custom-pagination [config]="config" nextButtonText="Next" previousButtonText="Previous" (pageChange)="GetPageData($event)"></custom-pagination>
+    </div>
+  </div>
+</div>

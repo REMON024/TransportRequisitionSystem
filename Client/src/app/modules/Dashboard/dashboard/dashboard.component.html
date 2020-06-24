@@ -1,0 +1,45 @@
+<div class="container" style="padding-top: 10px">
+    <label class="col-md-1 pr0">From Date</label>
+    <div class="col-md-2">
+        <input type="date"  class="form-control" [(ngModel)]="queryObj.FromDate" />
+    </div>
+    <label class="col-md-1">To Date</label>
+    <div class="col-md-2">
+        <input type="date" class="form-control" (change)="CheckToDateWithFromDate(queryObj.ToDate,queryObj.FromDate)"
+         [(ngModel)]="queryObj.ToDate" />
+    </div>
+    <div class="col-md-2">
+            
+            <select class="form-control" [(ngModel)]="queryObj.VehicleID">
+                <option [value]="0" selected>--Select--</option>
+                <option *ngFor="let emp of lst" [(ngValue)]="emp.VehicleID">{{emp.Name}}</option>
+            </select>
+            
+        </div>
+    <div class="col-md-1">
+        <button class="btn btn-primary" (click)="SearchByDateRange(queryObj)">Search</button>
+    </div>
+</div>
+
+
+<div class="progress-container"> 
+    <div class="progress-bar-date"></div>
+        <div class="progress-bar">
+        <span class="vl" [style.height]="GetHeight()+'%'"></span>
+        <div *ngFor="let number of lstTwentyNumber" [style.left]="getPercentage(number)+'%'" [style.width]="'4.17%'" class="progress" [style.background]="getColor(number)"> {{ number }}
+            <span class="vl-left" [style.height]="GetHeight()+'%'"></span>
+        </div>
+    </div>
+</div>
+
+<span *ngFor="let day of lstRequisition" class="progress-container">
+       <div class="progress-bar-date">
+           {{ day.Date | date:'MMM-dd' }}
+       </div>
+       <div class="progress-bar">
+               <div *ngFor="let schedule of day.lstSchedule"  [style.left]="GetLeft(schedule.FromTime)+'%'" [style.width]="GetSize(schedule.FromTime, schedule.ToTime)+'%'" class="progress">
+               {{ schedule.FromTime | date : 'hh:mm' }} - {{ schedule.ToTime | date : 'hh:mm' }} ({{schedule.DriverName}})
+            
+               </div>
+       </div>
+</span>

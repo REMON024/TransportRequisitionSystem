@@ -1,0 +1,111 @@
+<section class="panel panel_body req-list">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="col-md-1">
+          <label >From Date</label>
+          
+      </div>
+      <div class="col-md-3">
+          <input type="date"  class="form-control"  [(ngModel)]="objVMAdvancedReport.FromDate" name="FromDate" />
+      </div>
+      <div class="col-md-1">
+          <label>To Date</label>
+      </div>
+
+      <div class="col-md-3">
+
+          <input type="date" class="form-control" (change)="CheckToDateWithFromDate(objVMAdvancedReport.ToDate,objVMAdvancedReport.FromDate)"   [(ngModel)]="objVMAdvancedReport.ToDate" name="ToDate" />
+      </div>
+        
+        
+    </div>
+      <label class="col-md-1 ">Driver</label>
+      <div class="col-md-2">
+          <select class="form-control" [(ngModel)]="objVMAdvancedReport.DriverID" name="DriverID">
+              <option [value]="0" selected>--Select--</option>
+              <option *ngFor="let driver of lstDriver" [(ngValue)]="driver.DriverInfoId">{{driver.EmployeeName}}</option>
+          </select>
+      </div>
+      
+      <label class="col-md-1">Vehicle</label>
+      <div class="col-md-2">
+          
+          <select class="form-control" [(ngModel)]="objVMAdvancedReport.VehicleID" name="VehicleID">
+              <option [value]="0" selected>--Select--</option>
+              <option *ngFor="let vehicle of lstVehicle" [(ngValue)]="vehicle.VehicleID">{{vehicle.Name}}</option>
+          </select>
+         
+      </div>
+      
+      <label class="col-md-1">Employee</label>
+      <div class="col-md-2">
+          
+          <select class="form-control" [(ngModel)]="objVMAdvancedReport.EmployeeID" id="EmployeeID">
+              <option [value]="0" selected>--Select--</option>
+              <option *ngFor="let emp of lstEmployee" [(ngValue)]="emp.EmployeeId">{{emp.FirstName+' '+emp.Lastname}}</option>
+          </select>
+         
+      </div>
+      <div class="col-md-2">
+          <button class="btn btn-primary" (click)="SubmitSearch(objVMAdvancedReport)"  >Search</button>
+      </div>
+  </div>
+</section>
+<div>
+
+  <table class="table table-stripped">
+      <thead>
+            <th>#</th>
+            <th>Employee</th>
+            <th>Requisition Date</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Palce to Visit</th>
+            <th>Purpose of Visit</th>
+            <th>Project Name</th>
+            <th>Vehicle</th>
+            <th>Driver</th>
+            <th>Amount</th>
+            <th>Status</th>
+         
+
+      </thead>
+      
+              
+      
+      <tbody *ngIf="lstSearchResult?.length > 0">
+
+      
+            <tr *ngFor="let req of lstSearchResult | paginate : config; let i = index">
+                    <td>{{appUtils.GetSerial(i, config.currentPage, config.itemsPerPage)}}</td>
+          <td>{{req.EmployeeName}}</td>
+          <td style="width:2in">{{req.RequisitionDate | date:"yyyy-MMM-dd"}}</td>
+          <td style="width:2in">{{req.FromDate | date:"yyyy-MMM-dd hh:mm"}}</td>
+          <td style="width:2in">{{req.ToDate | date:"yyyy-MMM-dd hh:mm"}}</td>
+          <td>{{req.PlaceToVisit}}</td>
+          <td>{{req.PurposeOfVisit}}</td>
+          <td>{{req.ProjectName}}</td>
+          <td>{{req.VehicleName}}</td>
+          <td>{{req.DriverName}}</td>
+          <td>{{req.Amount}}</td>
+          <td>{{req.statusName}}</td>
+          <td style="width:2in">
+      
+            <button title="Requisition Detail"  routerLink="/dashboard/tms/traveldetails/{{req.RequisitionId}}"><i
+                class="fa fa-info-circle"></i></button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="clearfix">
+        <div *ngIf="lstSearchResult?.length > 0">
+          <custom-pagination [config]="config" nextButtonText="Next" previousButtonText="Previous" (pageChange)="GetPageData($event)"></custom-pagination>
+        </div>
+      </div>
+
+  <button (click)="exportAsXLSX()"><i class="fa fa-file-excel-o" style="font-size:48px;color:blue"></i></button>
+</div>
+
+
+

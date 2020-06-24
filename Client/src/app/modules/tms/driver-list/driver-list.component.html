@@ -1,0 +1,21 @@
+<table class="table table-stripped">
+    <tr>
+        <th>Driver Name</th>
+        <th>Driving Licence No</th>
+        <th>License Expire Date</th>
+        <th>Duty Start</th>
+        <th>Duty End</th>
+        <th style="width:10%;"> Action</th>
+    </tr>
+    <tr *ngFor="let req of lstDriverInfo">
+        <td>{{req.EmployeeName}}</td>
+        <td>{{req.DrivingLicenceNo}}</td>
+        <td>{{req.LicenceExpireDate| date:"yyyy-MMM-dd"}}</td>
+        <td>{{req.DutyStart}}</td>
+        <td>{{req.DutyEnd}}</td>
+        <td style="width:10%;">
+            <a title="Edit" (click)="editDriver(req)"><i class="fa fa-edit"></i></a>
+            <!-- <a title="Delete" (click)="DeleteDriver(req)"> <i style="color:red" class="fa fa-trash"></i></a> -->
+        </td>
+    </tr>
+</table>

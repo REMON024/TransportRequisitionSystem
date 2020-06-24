@@ -1,0 +1,42 @@
+<div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+  <!-- <form role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+    </form> -->
+  <ul class="nav menu">
+
+    <ng-container *ngFor="let route of routeList; let i= index" routerLinkActive #rla="routerLinkActive"
+      [routerLinkActiveOptions]="{exact: true}">
+
+     
+      <li *ngIf="route.Child == null">
+        <a [class.active-main]="rla.isActive" [routerLink]="[route.Url]">
+          <i class="{{route.Icon}}"></i>
+          {{route.Title}}
+        </a>
+      </li>
+      <li class="parent" *ngIf="route.Child != null">
+        <a data-toggle="collapse" [class.active-main]="rla.isActive" href="#sub-item-{{i}}">
+          <i class="{{route.Icon}}"></i>
+          {{route.Title}}
+        </a>
+        <ul class="children collapse" [class.in]="rla.isActive" id="sub-item-{{i}}">
+          <ng-container *ngFor="let childRoute of route.Child" routerLinkActive #subrla="routerLinkActive">
+            <li>
+              <a [class.active]="subrla.isActive" [routerLink]="childRoute.Url">
+                <i class="{{childRoute.Icon}}"></i> {{childRoute.Title}}
+              </a>
+            </li>
+          </ng-container>
+        </ul>
+      </li>
+
+
+    </ng-container>
+  </ul>
+  <div class="attribution">NybSys Systems Limited
+    <a href="https://www.nybsys.com">@nybsys</a><br />
+  </div>
+</div>
+<!--/.sidebar-->

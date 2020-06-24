@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-lg-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+       {{Title}}
+      </div>
+      <div class="panel-body">
+        <form [formGroup]="UserForm" (submit)="ButtonSubmit(UserForm.getRawValue())" class="form-horizontal">
+          <fieldset>
+            <!-- Name input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="name">Name</label>
+              <div class="col-md-9">
+                <input formControlName="Name" type="text" placeholder="Your name" class="form-control" appAutoFocus>
+              </div>
+            </div>
+
+            <!-- Email input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="surname">Surename</label>
+              <div class="col-md-9">
+                <input formControlName="Surname" type="text" placeholder="Surname" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="username">Username</label>
+              <div class="col-md-9">
+                <input formControlName="Username" type="text" placeholder="Username" class="form-control">
+              </div>
+            </div>
+
+            <!-- Email input-->
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="email">Your E-mail</label>
+              <div class="col-md-9">
+                <input formControlName="Email" type="text" placeholder="Your email" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="mobile">Mobile No</label>
+              <div class="col-md-9">
+                <input formControlName="PhoneNumber" type="text" placeholder="Mobile No" class="form-control">
+              </div>
+            </div>
+
+            <!-- Email input-->
+            <div class="form-group" *ngIf="!IsUpdate">
+              <label class="col-md-3 control-label" for="email">Password</label>
+              <div class="col-md-9">
+                <input formControlName="Password" type="password" placeholder="Password" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group" *ngIf="!IsUpdate">
+              <label class="col-md-3 control-label" for="email">Confirm Password</label>
+              <div class="col-md-9">
+                <input formControlName="ConfirmPassword" type="password" placeholder="Confirm Password" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label">Access Right</label>
+              <div class="col-md-9">
+                <select class="form-control" formControlName="AccessRightId">
+                  <option *ngFor="let item of lstAccessRight" [value]="item.AccessRightId">{{item.AccessRightName}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-md-3 control-label">Status</label>
+              <div class="col-md-9">
+                <select class="form-control" formControlName="Status">
+                  <option *ngFor="let item of StatusList" [value]="item.value">{{item.name}}</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Form actions -->
+            <div class="form-group">
+              <div class="col-md-12 widget-right">
+                <button type="submit" [disabled]="isDisableButton" class="btn btn-success btn-md pull-right">{{ButtonText}}</button>
+                <button type="button" [routerLink]="CancelButtonUrl" class="btn btn-warning btn-md pull-right">Cancel</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

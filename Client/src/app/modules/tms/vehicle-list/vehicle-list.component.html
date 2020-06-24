@@ -1,0 +1,22 @@
+<table class="table stripped-table">
+  <tr>
+      <th>Vehicle Type</th>
+      <th>Name</th>
+      <th>Registration No.</th>
+      <th>Engine No.</th>
+      <th>Chasis No.</th>
+      <th>Capacity</th>
+      <th>Action</th>
+  </tr>
+  <tr *ngFor="let vehicle of lstVehicle">
+      <td>{{vehicle.VehicleTypeName}}</td>
+      <td>{{vehicle.Name}}</td>
+      <td>{{vehicle.RegistrationNo}}</td>
+      <td>{{vehicle.EngineNumber}}</td>
+      <td>{{vehicle.ChasisNumber}}</td>
+      <td>{{vehicle.Capacity}}</td>
+      <td style="width:2in">
+        <a title="Edit" (click)="editVehicle(vehicle)"><i class="fa fa-edit"></i></a>
+    </td>
+  </tr>
+</table>
